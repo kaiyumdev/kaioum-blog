@@ -1,5 +1,6 @@
-import { Navbar } from "flowbite-react"
+import { Navbar, TextInput } from "flowbite-react"
 import { Link } from "react-router-dom"
+import { AiOutlineSearch } from "react-icons/ai"
 
 const Header = () => {
     return (
@@ -8,6 +9,10 @@ const Header = () => {
                 <span className="px-2 py-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-lg text-white">Kaioum&rsquo;s</span>
                 Blog
             </Link>
+            <form>
+                <TextInput type="text" placeholder="search..." rightIcon={AiOutlineSearch}>
+                </TextInput>
+            </form>
         </Navbar>
     )
 }
