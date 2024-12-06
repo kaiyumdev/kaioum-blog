@@ -1,4 +1,4 @@
-import { Navbar, TextInput } from "flowbite-react"
+import { Button, Navbar, TextInput } from "flowbite-react"
 import { Link } from "react-router-dom"
 import { AiOutlineSearch } from "react-icons/ai"
 
@@ -10,9 +10,17 @@ const Header = () => {
                 Blog
             </Link>
             <form>
-                <TextInput type="text" placeholder="search..." rightIcon={AiOutlineSearch}>
+                <TextInput
+                    type="text"
+                    placeholder="search..."
+                    rightIcon={AiOutlineSearch}
+                    className="hidden lg:inline"
+                >
                 </TextInput>
             </form>
+            <Button className="w-12 h-10 lg:hidden" color='gray' pill>
+                <AiOutlineSearch></AiOutlineSearch>
+            </Button>
         </Navbar>
     )
 }
