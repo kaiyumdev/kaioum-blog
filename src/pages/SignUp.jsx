@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 
 import { Link } from 'react-router-dom';
 import { Button, Label, TextInput } from 'flowbite-react';
@@ -17,8 +18,9 @@ const SignUp = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData),
             })
+            const data = await res.json();
         } catch (error) {
-
+            console.log(error);
         }
     }
 
