@@ -8,6 +8,19 @@ const SignUp = () => {
         setFormData({ ...formData, [e.target.id]: e.target.value });
     };
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        // TODO: Send the form data to the server for registration
+        try {
+            const res = await fetch('/api/auth/signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            })
+        } catch (error) {
+
+        }
+    }
 
     return (
         <div className='min-h-screen mt-20'>
