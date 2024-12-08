@@ -1,12 +1,13 @@
 /* eslint-disable no-unused-vars */
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Alert, Button, Label, Spinner, TextInput } from 'flowbite-react';
 import { useState } from 'react';
 const SignUp = () => {
     const [formData, setFormData] = useState({});
     const [errorMessage, setErrorMessage] = useState(null);
     const [loading, setLoading] = useState(null);
+    const navigate = useNavigate();
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.id]: e.target.value.trim() });
     };
@@ -31,6 +32,9 @@ const SignUp = () => {
                 return setErrorMessage(data.message);
             }
             setLoading(false);
+            if (res.ok) {
+                navigate('/sign-in');
+            }
         } catch (error) {
             setErrorMessage(error.message);
             setLoading(false);
