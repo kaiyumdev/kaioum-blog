@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 
 import { Link } from 'react-router-dom';
-import { Alert, Button, Label, TextInput } from 'flowbite-react';
+import { Alert, Button, Label, Spinner, TextInput } from 'flowbite-react';
 import { useState } from 'react';
 const SignUp = () => {
     const [formData, setFormData] = useState({});
@@ -19,6 +19,8 @@ const SignUp = () => {
         }
         // TODO: Send the form data to the server for registration
         try {
+            setLoading(true);
+            setErrorMessage(null);
             const res = await fetch('/api/auth/signup', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -28,8 +30,10 @@ const SignUp = () => {
             if (data.success === false) {
                 return setErrorMessage(data.message);
             }
+            setLoading(false);
         } catch (error) {
             setErrorMessage(error.message);
+            setLoading(false);
         }
     }
 
@@ -83,8 +87,16 @@ const SignUp = () => {
                         <Button
                             gradientDuoTone='purpleToPink'
                             type='submit'
+                            disabled={loading}
                         >
-                            Sign Up
+                            {loading ? (
+                                <>
+                                    <Spinner size='sm' />
+                                    <span className='pl-3'>Loading...</span>
+                                </>
+                            ) : (
+                                'Sign Up'
+                            )}
                         </Button>
                     </form>
                     <div className='flex gap-2 text-sm mt-5'>
