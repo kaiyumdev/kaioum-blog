@@ -1,16 +1,22 @@
 /* eslint-disable no-unused-vars */
 
 import { Link } from 'react-router-dom';
-import { Button, Label, TextInput } from 'flowbite-react';
+import { Alert, Button, Label, TextInput } from 'flowbite-react';
 import { useState } from 'react';
 const SignUp = () => {
     const [formData, setFormData] = useState({});
+    const [errorMessage, setErrorMessage] = useState(null);
+    const [loading, setLoading] = useState(null);
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.id]: e.target.value });
+        setFormData({ ...formData, [e.target.id]: e.target.value.trim() });
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!formData.username || !formData.email || !formData.password) {
+            setErrorMessage('Please fill out all fields');
+            return;
+        }
         // TODO: Send the form data to the server for registration
         try {
             const res = await fetch('/api/auth/signup', {
@@ -84,6 +90,11 @@ const SignUp = () => {
                             Sign In
                         </Link>
                     </div>
+                    {
+                        errorMessage && (
+                            <Alert className='mt-5' color='failure'   >{errorMessage}</Alert>
+                        )
+                    }
                 </div>
             </div>
         </div>
