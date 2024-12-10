@@ -21,7 +21,7 @@ const OAuth = () => {
                 body: JSON.stringify({
                     name: resultsFromGoogle.user.displayName,
                     gmail: resultsFromGoogle.user.email,
-                    googlePhotoUrl: resultsFromGoogle.user.photoUrl
+                    googlePhotoUrl: resultsFromGoogle.user.photoURL
                 })
             })
             const data = await res.json()
