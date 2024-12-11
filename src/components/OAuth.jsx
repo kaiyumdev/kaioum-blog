@@ -20,7 +20,7 @@ const OAuth = () => {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
                     name: resultsFromGoogle.user.displayName,
-                    gmail: resultsFromGoogle.user.email,
+                    email: resultsFromGoogle.user.email,
                     googlePhotoUrl: resultsFromGoogle.user.photoURL
                 })
             })
