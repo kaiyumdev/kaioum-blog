@@ -112,7 +112,7 @@ const SignUp = () => {
                     </div>
                     {
                         errorMessage && (
-                            <Alert className='mt-5' color='failure'   >{errorMessage}</Alert>
+                            <Alert className='mt-5' color='failure'>{errorMessage}</Alert>
                         )
                     }
                 </div>
