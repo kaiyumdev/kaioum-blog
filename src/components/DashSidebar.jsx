@@ -8,14 +8,14 @@ const DashSidebar = () => {
     return (
         <Sidebar>
             <Sidebar.Items>
-                <Sidebar.Group>
+                <Sidebar.ItemGroup>
                     <Sidebar.Item active icon={HiUser} label={'User'} labelColor="dark">
                         Profile
                     </Sidebar.Item>
-                    <Sidebar.Item active icon={HiArrowSmRight} labelColor="dark">
+                    <Sidebar.Item active icon={HiArrowSmRight} className="cursor-pointer">
                         Sign Out
                     </Sidebar.Item>
-                </Sidebar.Group>
+                </Sidebar.ItemGroup>
             </Sidebar.Items>
         </Sidebar>
     )
